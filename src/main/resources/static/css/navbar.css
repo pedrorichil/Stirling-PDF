@@ -351,7 +351,7 @@ span.icon-text::after {
 }
 
 .go-pro-badge {
-  display: inline-block;
+  display: none;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
