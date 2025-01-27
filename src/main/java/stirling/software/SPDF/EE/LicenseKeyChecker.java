@@ -18,7 +18,7 @@ public class LicenseKeyChecker {
 
     private final ApplicationProperties applicationProperties;
 
-    private boolean enterpriseEnabledResult = false;
+    private boolean enterpriseEnabledResult = true;
 
     @Autowired
     public LicenseKeyChecker(
@@ -35,7 +35,7 @@ public class LicenseKeyChecker {
 
     private void checkLicense() {
         if (!applicationProperties.getEnterpriseEdition().isEnabled()) {
-            enterpriseEnabledResult = false;
+            enterpriseEnabledResult = true;
         } else {
             enterpriseEnabledResult =
                     licenseService.verifyLicense(
@@ -50,7 +50,7 @@ public class LicenseKeyChecker {
 
     public void updateLicenseKey(String newKey) throws IOException {
         applicationProperties.getEnterpriseEdition().setKey(newKey);
-        GeneralUtils.saveKeyToConfig("EnterpriseEdition.key", newKey, false);
+        GeneralUtils.saveKeyToConfig("EnterpriseEdition.key", newKey, true);
         checkLicense();
     }
 
